@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Case Descriptions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h2 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .test-case {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 20px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            white-space: pre-wrap;
+        }
+        .test-case p {
+            margin: 8px 0;
+            font-size: 16px;
+        }
+        strong {
+            color: #0056b3;
+            font-size: 18px;
+        }
+        textarea, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            margin-bottom: 12px;
+            font-size: 16px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        textarea {
+            height: 120px;
+        }
+        .submit-btn {
+            padding: 12px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 5px;
+            display: block;
+            margin-top: 20px;
+            width: 100%;
+        }
+        .submit-btn:hover {
+            background-color: #218838;
+        }
+        @media (min-width: 768px) {
+            .test-case, .submit-btn {
+                width: 60%;
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h2>Generated Test Cases</h2>
+    <form action="/submit_results" method="POST">
+        <div class="test-case">
+            <p>{{ test_cases | safe }}</p>
+            <input type="hidden" name="test_cases" value="{{ test_cases }}">
+            <strong>Status:</strong><br>
+            <select name="status">
+                <option value="">Select Status</option>
+                <option value="Pass">Pass</option>
+                <option value="Fail">Fail</option>
+            </select><br>
+            <strong>Comments:</strong><br>
+            <textarea name="comments"></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Submit Results</button>
+    </form>
+</body>
+</html>
